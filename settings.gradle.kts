@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "FnShop"
 include(":app")
- 
+include(":interactor")
