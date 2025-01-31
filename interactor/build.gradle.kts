@@ -5,9 +5,22 @@ plugins {
 
 android {
     namespace = "io.shiryaev.interactor"
+
+    defaultConfig {
+        buildConfigField(
+            "String",
+            "API_KEY",
+            "\"${project.findProperty("FN_SHOP_API_KEY")}\""
+        )
+    }
+
+    buildFeatures {
+        buildConfig = true
+    }
 }
 
 dependencies {
+    implementation(libs.retrofit)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

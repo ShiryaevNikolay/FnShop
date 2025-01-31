@@ -3,6 +3,7 @@ import com.android.build.gradle.AppPlugin
 import com.android.build.gradle.BaseExtension
 import com.android.build.gradle.LibraryExtension
 import com.android.build.gradle.LibraryPlugin
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
@@ -37,5 +38,15 @@ fun BaseExtension.baseConfig() {
         targetSdk = 35
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
+    }
+    tasks.withType<KotlinCompile> {
+        kotlinOptions {
+            jvmTarget = "21"
+        }
     }
 }
