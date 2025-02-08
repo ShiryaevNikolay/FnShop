@@ -3,6 +3,7 @@ import com.android.build.gradle.AppPlugin
 import com.android.build.gradle.BaseExtension
 import com.android.build.gradle.LibraryExtension
 import com.android.build.gradle.LibraryPlugin
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
@@ -12,6 +13,7 @@ plugins {
     alias(libs.plugins.kotlin.compose) apply false
     alias(libs.plugins.android.library) apply false
     alias(libs.plugins.ksp) apply false
+    alias(libs.plugins.hilt.android) apply false
 }
 
 subprojects {
@@ -42,12 +44,12 @@ fun BaseExtension.baseConfig() {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_21
-        targetCompatibility = JavaVersion.VERSION_21
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     tasks.withType<KotlinCompile> {
-        kotlinOptions {
-            jvmTarget = "21"
+        compilerOptions {
+            jvmTarget = JvmTarget.JVM_17
         }
     }
 }
